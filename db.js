@@ -1,6 +1,6 @@
 function getAjax(url, success) {
   var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
-  xhr.open("POST", url);
+  xhr.open("GET", url);
   xhr.onreadystatechange = function() {
     if (xhr.readyState > 3 && xhr.status === 200) success(xhr.responseText);
   };
@@ -10,7 +10,7 @@ function getAjax(url, success) {
 }
 (function(){
   console.log("Database Installed!");
-  getAjax("https://cors-anywhere.herokuapp.com/https://Dragon-Database.simplexshotz.repl.co/?a=1", function(data) {
+  getAjax("https://cors-anywhere.herokuapp.com/https://Dragon-Database.simplexshotz.repl.co/?aee=1", function(data) {
     console.log(data);
   });
 })();
