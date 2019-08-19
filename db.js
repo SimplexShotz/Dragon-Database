@@ -12,7 +12,8 @@ function request(query, callback) {
   getAjax("https://cors-anywhere.herokuapp.com/https://Dragon-Database.simplexshotz.repl.co/?" + query, callback);
 }
 class DragonDatabase {
-  constructor() {
+  constructor(database) {
+    this.database = database;
   }
   createDatabase(name, callback) {
     request("action=create&data=" + name, function(res) {
@@ -22,6 +23,20 @@ class DragonDatabase {
         callback(res);
       }
     });
+  }
+  get(callback) {
+    if (this.database) {
+      request("action=read&data=" + this.database, function(res) {
+        res = JSON.parse(res);
+        if (res.err) {
+          callback(undefined, res.err);
+        } else {
+          callback(res.data);
+        }
+      });
+    } else {
+      callback(undefined, "This object is not attached to a database.");
+    }
   }
 }
 (function(){
