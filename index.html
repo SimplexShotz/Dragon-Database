@@ -45,6 +45,10 @@
         border: none;
         cursor: pointer;
       }
+      button:disabled {
+        background-image: linear-gradient(rgb(240, 240, 240), rgb(225, 225, 225));
+        color: rgb(0, 0, 0);
+      }
       button:focus {
         outline: none;
       }
@@ -162,10 +166,12 @@
       var db = new DragonDatabase();
       function create() {
         document.getElementById("loader-container1").innerHTML = "<div class='loader'></div>";
+        document.getElementById("Create").disabled = true;
         var name = document.getElementById("name").value;
         if (name === "") {
           error("The database must have a name.");
           document.getElementById("loader-container1").innerHTML = "";
+          document.getElementById("Create").disabled = false;
         } else {
           db.createDatabase(name, function(err) {
             if (err) {
@@ -175,6 +181,7 @@
               success("Database created successfully!");
             }
             document.getElementById("loader-container1").innerHTML = "";
+            document.getElementById("Create").disabled = false;
           });
         }
       }
