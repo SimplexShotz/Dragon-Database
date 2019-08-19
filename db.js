@@ -40,7 +40,7 @@ class DragonDatabase {
   }
   set(data, callback) {
     if (this.database) {
-      request("action=read&name=" + this.database + "&data=" + data, function(res) {
+      request("action=write&name=" + this.database + "&data=" + data, function(res) {
         if (res === "") {
           callback();
         } else {
