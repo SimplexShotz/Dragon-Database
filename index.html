@@ -88,8 +88,12 @@
       function create() {
         var name = document.getElementById("name").value;
         db.createDatabase(name, function(err) {
-          error(err);
-          console.error(err);
+          if (err) {
+            error(err);
+            console.error(err);
+          } else {
+            success("Database created successfully!");
+          }
         });
       }
       function ialert(txt, color) {
@@ -104,6 +108,9 @@
       }
       function error(txt) {
         ialert(txt, "#FF0000");
+      }
+      function success(txt) {
+        ialert(txt, "#00FF00");
       }
       error("test");
     </script>
