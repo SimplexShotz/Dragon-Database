@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dragon Database</title>
+    <script src="https://simplexshotz.github.io/Dragon-Database/db.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+        background-color: rgb(250, 250, 250);
+      }
+      * {
+        font-family: "Roboto";
+      }
+      input {
+        font-size: 14pt;
+      }
+      button {
+        background-color: rgb(50, 255, 50);
+        color: rgb(255, 255, 255);
+        font-family: "Roboto Medium";
+        padding: 10px;
+        border-radius: 10px;
+      }
+      #header {
+        width: calc(100% - 100px);
+        padding: 50px;
+        height: 50px;
+        background-color: rgb(50, 50, 50);
+        color: rgb(255, 255, 255);
+      }
+      #content {
+        padding: 50px;
+        margin: 0px 25% 0px 25%;
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+      }
+      #alert-container {
+        background-color: rgba(0, 0, 0, 0);
+        position: absolute;
+        bottom: 0px;
+        left: 25%;
+        width: 50%;
+        padding: 0px;
+        margin: 0px;
+      }
+      .ialert {
+        border-radius: 10px;
+        padding: 25px;
+        width: calc(100% - 50px);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header">
+      <h1>Dragon Database</h1>
+    </div>
+    <div id="content"></div>
+      <h3>Database Creation</h3>
+      <h4>Enter a name for the database, then click "Create."</h4>
+      <input id="name" placeholder="Database Name">
+      <button id="Create" onclick="create()">Create</button>
+    </div>
+    <div id="alerts-container"></div>
+    <script>
+      var alerts = [];
+      var db = new DragonDatabase();
+      function create() {
+        var name = document.getElementById("name").value;
+        db.createDatabase(name, function(err) {
+          error(err);
+          console.error(err);
+        });
+      }
+      function ialert(txt, color) {
+        document.getElementById("alerts-container").innerHTML = "<div id='ialert-" + alerts.length + "' class='ialert' style='background-color: \"" + color + "\";>" + txt + "</div>" + document.getElementById("alerts-container").innerHTML;
+        setTimeout(function() {
+          document.getElementById("ialert-" + alerts.length).innerHTML = "";
+        }, 10000);
+        alerts.push({
+          txt: txt,
+          color: color
+        });
+      }
+      function error(txt) {
+        ialert(txt, "#FF0000");
+      }
+      error("test");
+    </script>
+  </body>
+</html>
