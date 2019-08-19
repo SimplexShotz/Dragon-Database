@@ -57,7 +57,7 @@
         background-color: rgb(255, 255, 255);
         color: rgb(0, 0, 0);
       }
-      #alert-container {
+      #alerts-container {
         background-color: rgba(0, 0, 0, 0);
         position: absolute;
         bottom: 0px;
@@ -65,6 +65,8 @@
         width: 50%;
         padding: 0px;
         margin: 0px;
+        height: 200px;
+        overflow: scroll;
       }
       .ialert {
         border-radius: 10px;
@@ -99,11 +101,17 @@
       function ialert(txt, color) {
         document.getElementById("alerts-container").innerHTML = "<div id='ialert-" + alerts.length + "' class='ialert' style='background-color: \"" + color + "\";>" + txt + "</div>" + document.getElementById("alerts-container").innerHTML;
         setTimeout(function() {
-          document.getElementById("ialert-" + alerts.length).innerHTML = "";
+          for (var i = 0; i < alerts.length; i++) {
+            if (alerts[i].displayed) {
+              document.getElementById("ialert-" + i).style.display = "none";
+              alerts[i].displayed = false;
+            }
+          }
         }, 10000);
         alerts.push({
           txt: txt,
-          color: color
+          color: color,
+          displayed: true
         });
       }
       function error(txt) {
