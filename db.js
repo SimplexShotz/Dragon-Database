@@ -16,7 +16,7 @@ class DragonDatabase {
     this.database = database;
   }
   createDatabase(name, callback) {
-    request("action=create&data=" + name, function(res) {
+    request("action=create&name=" + name, function(res) {
       if (res === "") {
         callback();
       } else {
@@ -26,12 +26,25 @@ class DragonDatabase {
   }
   get(callback) {
     if (this.database) {
-      request("action=read&data=" + this.database, function(res) {
+      request("action=read&name=" + this.database, function(res) {
         res = JSON.parse(res);
         if (res.err) {
           callback(undefined, res.err);
         } else {
           callback(res.data);
+        }
+      });
+    } else {
+      callback(undefined, "This object is not attached to a database.");
+    }
+  }
+  set(data, callback) {
+    if (this.database) {
+      request("action=read&name=" + this.database + "&data=" + data, function(res) {
+        if (res === "") {
+          callback();
+        } else {
+          callback(res);
         }
       });
     } else {
