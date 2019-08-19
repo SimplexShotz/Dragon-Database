@@ -4,6 +4,7 @@
     <title>Dragon Database</title>
     <script src="https://simplexshotz.github.io/Dragon-Database/db.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
     <style>
       body {
         margin: 0px;
@@ -17,11 +18,11 @@
       h1 {}
       h2 {}
       h3 {
-        font-size: 18pt;
+        font-size: 20pt;
         line-height: 18pt;
         font-weight: 500;
       }
-      h3 {
+      h4 {
         font-size: 14pt;
         line-height: 14pt;
       }
@@ -47,7 +48,7 @@
       #header {
         width: calc(100% - 100px);
         padding: 50px;
-        background-color: rgb(50, 50, 50);
+        background-image: linear-gradient(rgb(50, 50, 50), rgb(25, 25, 25));
         color: rgb(255, 255, 255);
         font-size: 24pt;
       }
@@ -74,11 +75,34 @@
         width: calc(100% - 50px);
         margin-bottom: 5px;
       }
+      .code {
+        font-family: "Roboto", monospace;
+        background-image:  linear-gradient(rgb(50, 50, 50), rgb(25, 25, 25));
+        width: calc(100% - 50px);
+        padding: 0px 25px 0px 0px;
+      }
+      .code-sider {
+        width: 10px;
+        background-image: linear-gradient(rgb(255, 255, 255), rgb(250, 250, 250));
+      }
+      .code-container {
+        padding: 25px 0px 25px 15px;
+        color: rgb(255, 255, 255);
+        font-size: 18pt;
+      }
+      .error {
+        display: inline;
+        color: rgb(225, 50, 50);
+      }
     </style>
   </head>
   <body>
     <div id="header">Dragon Database</div>
     <div id="content">
+      <h3>Welcome!</h3>
+      <h4>Welcome to Dragon Database! In order to use Dragon Database, simply add the following line of code in the head of your HTML file:</h4>
+      <div class="code"><div class="code-sider"></div><div class="code-container">&ltscript src="https://simplexshotz.github.io/Dragon-Database/db.js">&lt/script></div></div>
+      <h4>Great! To ensure that the Dragon Database was installed properly, load your webpage. When you open the console, there should be a log that states "<b>Database Installed!</b>" <span class="error">If you do not see this log, check to make sure you copied and pasted the script element properly.</span></h4>
       <h3>Database Creation</h3>
       <h4>Enter a name for the database, then click "Create."</h4>
       <input id="name" placeholder="Database Name"><br>
