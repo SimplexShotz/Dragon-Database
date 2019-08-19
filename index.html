@@ -98,8 +98,8 @@
           }
         });
       }
-      function ialert(txt, color1, color2) {
-        document.getElementById("alerts-container").innerHTML = "<div id='ialert-" + alerts.length + "' class='ialert' style='background-image: linear-gradient(" + color1 + ", " + color2 + ");'>" + txt + "</div>" + document.getElementById("alerts-container").innerHTML;
+      function ialert(txt, color1, color2, color3) {
+        document.getElementById("alerts-container").innerHTML = "<div id='ialert-" + alerts.length + "' class='ialert' style='color: " + color3 + "; background-image: linear-gradient(" + color1 + ", " + color2 + ");'>" + txt + "</div>" + document.getElementById("alerts-container").innerHTML;
         setTimeout(function() {
           for (var i = 0; i < alerts.length; i++) {
             if (alerts[i].displayed) {
@@ -111,15 +111,17 @@
         }, 10000);
         alerts.push({
           txt: txt,
-          color: color,
+          color1: color1,
+          color2: color2,
+          color3: color3,
           displayed: true
         });
       }
       function error(txt) {
-        ialert(txt, "rgb(225, 50, 50)", "rgb(175, 25, 25)");
+        ialert(txt, "rgb(225, 50, 50)", "rgb(175, 25, 25)", "rgb(255, 255, 255)");
       }
       function success(txt) {
-        ialert(txt, "rgb(50, 225, 50)", "rgb(25, 175, 25)");
+        ialert(txt, "rgb(50, 225, 50)", "rgb(25, 175, 25)", "rgb(255, 255, 255)");
       }
       error("test");
     </script>
