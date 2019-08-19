@@ -40,6 +40,9 @@ class DragonDatabase {
   }
   set(data, callback) {
     if (this.database) {
+      data = JSON.stringify(data);
+      data.split(" ").join("--space-");
+      data.split("'").join("--apostrophe-");
       request("action=write&name=" + this.database + "&data=" + data, function(res) {
         if (res === "") {
           callback();
