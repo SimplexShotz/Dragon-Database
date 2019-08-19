@@ -109,6 +109,26 @@
         background-image: linear-gradient(90deg, rgb(240, 240, 240), rgb(255, 255, 255));
         margin: 25px 0px 25px 0px;
       }
+      .loader {
+        display: inline;
+        border: 16px solid rgb(250, 250, 250);
+        border-top: 16px solid rgb(50, 50, 50);
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        animation: spin 1s linear infinite;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      .inline {
+        display: inline;
+      }
     </style>
   </head>
   <body>
@@ -124,16 +144,18 @@
       <h3>Database Creation</h3>
       <h4>Enter a name for the database, then click "Create."</h4>
       <input id="name" placeholder="Database Name"><br>
-      <button id="Create" onclick="create()">Create</button>
+      <button id="Create" onclick="create()">Create</button><div id="loader-container1" class="inline"></div>
     </div>
     <div id="alerts-container"></div>
     <script>
       var alerts = [];
       var db = new DragonDatabase();
       function create() {
+        document.getElementById("loader-container1").innerHTML = "<div class='loader'></div>";
         var name = document.getElementById("name").value;
         if (name === "") {
           error("The database must have a name.");
+          document.getElementById("loader-container1").innerHTML = "";
         } else {
           db.createDatabase(name, function(err) {
             if (err) {
@@ -142,6 +164,7 @@
             } else {
               success("Database created successfully!");
             }
+            document.getElementById("loader-container1").innerHTML = "";
           });
         }
       }
