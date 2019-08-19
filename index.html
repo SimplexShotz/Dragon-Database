@@ -159,7 +159,7 @@
       window.onload = function() {
         var s = document.getElementsByClassName("code-sider");
         for (var i = 0; i < s.length; i++) {
-          s[i].style.height = s[i].parentNode.style.height + "px";
+          s[i].style.height = s[i].parentNode.offsetHeight + "px";
         }
       }
     </script>
