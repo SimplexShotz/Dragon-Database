@@ -130,6 +130,12 @@
       .inline {
         display: inline;
       }
+      .x {
+        float: right;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: rgb(255, 255, 255);
+        border-radius: 50%;
+      }
     </style>
   </head>
   <body>
@@ -170,7 +176,7 @@
         }
       }
       function ialert(txt, color1, color2, color3) {
-        document.getElementById("alerts-container").innerHTML = "<div id='ialert-" + alerts.length + "' class='ialert' style='color: " + color3 + "; background-image: linear-gradient(" + color1 + ", " + color2 + ");'>" + txt + "</div>" + document.getElementById("alerts-container").innerHTML;
+        document.getElementById("alerts-container").innerHTML = "<div id='ialert-" + alerts.length + "' class='ialert' style='color: " + color3 + "; background-image: linear-gradient(" + color1 + ", " + color2 + ");'>" + txt + "<div class='x' onclick='document.getElementById(\"ialert-" + alerts.length + "\").style.display=\"none\";'>X</div></div>" + document.getElementById("alerts-container").innerHTML;
         setTimeout(function() {
           for (var i = 0; i < alerts.length; i++) {
             if (alerts[i].displayed) {
