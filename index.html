@@ -99,7 +99,7 @@
         });
       }
       function ialert(txt, color) {
-        document.getElementById("alerts-container").innerHTML = "<div id='ialert-" + alerts.length + "' class='ialert' style='background-color: \"" + color + "\";>" + txt + "</div>" + document.getElementById("alerts-container").innerHTML;
+        document.getElementById("alerts-container").innerHTML = "<div id='ialert-" + alerts.length + "' class='ialert' style='background-color: \"" + color + "\"';>" + txt + "</div>" + document.getElementById("alerts-container").innerHTML;
         setTimeout(function() {
           for (var i = 0; i < alerts.length; i++) {
             if (alerts[i].displayed) {
