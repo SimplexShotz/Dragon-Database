@@ -8,9 +8,22 @@ function getAjax(url, success) {
   xhr.send();
   return xhr;
 }
+function request(query, callback) {
+  getAjax("https://cors-anywhere.herokuapp.com/https://Dragon-Database.simplexshotz.repl.co/?" + query, callback);
+}
+class DragonDatabase {
+  constructor() {
+  }
+  createDatabase(name, callback) {
+    request("action=create&data=" + name, function(res) {
+      if (res === "") {
+        callback();
+      } else {
+        callback(res);
+      }
+    });
+  }
+}
 (function(){
   console.log("Database Installed!");
-  getAjax("https://cors-anywhere.herokuapp.com/https://Dragon-Database.simplexshotz.repl.co/?action=read&data=", function(data) {
-    console.log(data);
-  });
 })();
