@@ -10,7 +10,7 @@ function getAjax(url, success) {
 }
 (function(){
   console.log("Database Installed!");
-  getAjax("https://cors-anywhere.herokuapp.com/https://Dragon-Database.simplexshotz.repl.co/?aee=1", function(data) {
+  getAjax("https://cors-anywhere.herokuapp.com/https://Dragon-Database.simplexshotz.repl.co/?action=read&data=", function(data) {
     console.log(data);
   });
 })();
