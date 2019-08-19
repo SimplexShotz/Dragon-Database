@@ -90,14 +90,18 @@
       var db = new DragonDatabase();
       function create() {
         var name = document.getElementById("name").value;
-        db.createDatabase(name, function(err) {
-          if (err) {
-            error(err);
-            console.error(err);
-          } else {
-            success("Database created successfully!");
-          }
-        });
+        if (name === "") {
+          error("The database must have a name.");
+        } else {
+          db.createDatabase(name, function(err) {
+            if (err) {
+              error(err);
+              console.error(err);
+            } else {
+              success("Database created successfully!");
+            }
+          });
+        }
       }
       function ialert(txt, color1, color2, color3) {
         document.getElementById("alerts-container").innerHTML = "<div id='ialert-" + alerts.length + "' class='ialert' style='color: " + color3 + "; background-image: linear-gradient(" + color1 + ", " + color2 + ");'>" + txt + "</div>" + document.getElementById("alerts-container").innerHTML;
@@ -124,7 +128,6 @@
       function success(txt) {
         ialert(txt, "rgb(50, 225, 50)", "rgb(25, 175, 25)", "rgb(255, 255, 255)");
       }
-      error("test");
     </script>
   </body>
 </html>
