@@ -98,8 +98,8 @@
           }
         });
       }
-      function ialert(txt, color) {
-        document.getElementById("alerts-container").innerHTML = "<div id='ialert-" + alerts.length + "' class='ialert' style='background-color: \"" + color + "\";'>" + txt + "</div>" + document.getElementById("alerts-container").innerHTML;
+      function ialert(txt, color1, color2) {
+        document.getElementById("alerts-container").innerHTML = "<div id='ialert-" + alerts.length + "' class='ialert' style='background-image: linear-gradient(" + color1 + ", " + color2 + ");'>" + txt + "</div>" + document.getElementById("alerts-container").innerHTML;
         setTimeout(function() {
           for (var i = 0; i < alerts.length; i++) {
             if (alerts[i].displayed) {
@@ -116,10 +116,10 @@
         });
       }
       function error(txt) {
-        ialert(txt, "#FF0000");
+        ialert(txt, "rgb(225, 50, 50)", "rgb(175, 25, 25)");
       }
       function success(txt) {
-        ialert(txt, "#00FF00");
+        ialert(txt, "rgb(50, 225, 50)", "rgb(25, 175, 25)");
       }
       error("test");
     </script>
