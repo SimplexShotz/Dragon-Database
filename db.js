@@ -40,7 +40,7 @@ class DragonDatabase {
   }
   set(data, callback) {
     if (this.database) {
-      data = JSON.stringify(data);
+      data = encodeURI(JSON.stringify(data));
       request("action=write&name=" + this.database + "&data=" + data, function(res) {
         if (res === "") {
           callback();
